@@ -1,0 +1,118 @@
+<%- include('partials/header.ejs') %>
+<div class="row d-flex justify-content-around p-3">
+   <!--categories-->
+   <div class="col-4">
+      <p class="lead"><strong>YelpCamp</strong></p>
+      <div class="list-group">
+        <li class="active list-group-item">Category 1</li>
+        <li class="list-group-item">Category 2</li>
+        <li class="list-group-item">Category 3</li>
+      </div>
+   </div>
+   <!--reviews and show-->
+   <div class="col-8 container">
+      <!--show-->
+      <div>
+        <!--card-->
+        <div class="card">
+         <img src="<%= camping.image %>" alt="" class="card-img-top w-auto">
+         <div class="card-body text-center">
+            <div class="row">
+               <div class="col">
+                  <h5>
+                     <p class="text-start">
+                        <strong><%= camping.name %></strong>
+                     </p>
+                  </h5>
+               </div>
+               <div class="col">
+                  <h5>
+                     <p class="text-end">
+                     <b>$<%= camping.price %>/night</b>
+                     </p>
+                  </h5>
+               </div>
+            </div>
+           <p class="card-text text-start"><%= camping.description %></p>
+           <p class="text-start">
+            <em>-Submitted by <%= camping.author.username %></em>
+           </p>
+           <div class="row">
+            <% if(userLoggedIn && camping.author.id.equals(userLoggedIn._id)){%>
+              <div class="col">
+                  <p class="text-start">
+                  <button type="button" class="btn btn-warning w-auto rounded"><a href="/camping/<%= camping._id %>/edit" class="text-light" style="text-decoration: none;">Edit</a></button>
+                  </p>
+               </div>
+               <div class="col">
+                  <form action="/camping/<%= camping._id %>?_method=DELETE" method="post">
+                     <p class="text-end">
+                     <button class="btn btn-danger w-auto rounded">Delete</button>
+                  </p>
+                 </form>
+               </div>
+            <%} %>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!--review/comment-->
+      <br>
+      <div class="card p-3">
+         <div>
+               <form action="/camping/<%= camping._id %>/comments" method="post">
+               <div class="row">
+                  <div class="col-9">
+                     <input type="text" name="text" class="rounded p-1 m-1 w-100 border-0 border-bottom" placeholder="comment here">
+                 </div>
+                 <div class="col-3">
+                  <button type="submit" class="btn btn-xs btn btn-success w-auto rounded text-light form-inline ">Add New Comment</button>
+                 </div>
+               </div>
+               </form>
+         </div>
+         <br>
+         <!--comment section-->
+         <% camping.comment.forEach(function(comment){%>
+            <div class="">
+                <div class="row">
+                   <div class="col">
+                     <p class="text-start">
+                     <strong><%= comment.author.username %></strong>
+                     </p>
+                   </div>
+                   <div class="col">
+                     <p class="text-end">
+                        10 days ago
+                     </p>
+                   </div>
+                </div>
+                <div>
+                  <p>
+                     <cite><%= comment.text %></cite>
+                  </p>
+                </div>
+                <div class="row">
+                  <%if(comment.author.id.equals(userLoggedIn._id)){%>
+                     <div class="col">
+                        <button class="btn btn-xs btn btn-warning w-auto rounded">
+                           <a href="/camping/<%= camping._id %>/comment/<%= comment._id %>/edit" class="text-light" style="text-decoration: none;">Edit</a>
+                        </button>
+                     </div>
+                     <div class="col">
+                        <form action="/camping/<%= camping._id %>/comment/<%= comment._id %>/edit?_method=DELETE" method="post">
+                           <p class="text-end">
+                              <button class="btn btn-xs btn btn-danger w-auto rounded">Delete</button>
+                           </p>
+                        </form>
+                     </div>
+                  <%}%>
+                </div>
+            </div>
+         <%  }) %>
+
+      </div>
+   </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+<div class="container pt-2">
+    <div class="mt-5 p-5 bg-light text-dark rounded border">
+        <h1><strong>Welcome To YelpCamp!</strong></h1>
+        <p>View Our Hand-picked Campgrounds From All Over The World</p>
+        <button class="rounded btn btn-primary"><a href="/camping/new" class=" text-light " style="text-decoration: none;"><strong>Add New Camp</strong></a></button>
+    </div>
+
+    <div class="row my-3 d-flex justify-content-around container">
+    <%for(var j=0;j<camping.length;j++){ %>
+            <div class="col-sm-6 col-md-3 col my-2">
+                <div class="card" style="width: auto;height: auto;">
+                    <img src="<%= camping[j].image %>" class="rounded-0" style="width: auto; height: 
+                    150px;">
+                    <div class="card-body">
+                      <h4><strong><%=camping[j].name %></strong></h4>
+                      <p class="card-text"></p>
+                      <a href="/camping/<%= camping[j]._id %>" class="btn btn-primary">more info</a>
+                    </div>
+                  </div>
+            </div>
+    <%};%>
+</div>
+</div>
+<%- include('partials/footer.ejs') %>

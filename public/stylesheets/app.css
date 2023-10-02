@@ -1,0 +1,52 @@
+.landing-body{
+    height: 100vh;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation-name: slideIn;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+@keyframes slideIn{
+   0%{
+    background-image: url('https://th.bing.com/th/id/OIP.zKVrQbrtzOiGl9_AeErnuQHaEK?w=290&h=180&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+   }
+   25%{
+    background-image: url('https://th.bing.com/th/id/OIP.rEXuL4ZpiDUn8W8-6Ny_aQHaEm?w=292&h=181&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+   }
+   50%{
+    background-image: url('https://th.bing.com/th/id/OIP.rEXuL4ZpiDUn8W8-6Ny_aQHaEm?w=292&h=181&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+   }
+   75%{
+    background-image: url('https://th.bing.com/th/id/OIP.4LawClSi4AiCYxSCdr-LDwHaE8?w=231&h=180&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+   }
+   100%{
+    background-image: url('https://th.bing.com/th/id/OIP.0p3f3rOuziZu1cwZG4d0lQHaE8?w=278&h=186&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+   }
+}
+.landing-header{
+   z-index: 1;
+   position: relative;
+   text-align: center;
+   padding-top: 45vh;
+}
+.top-layer{
+    margin-top: 70px;
+}
